@@ -4,6 +4,7 @@ import css from "./App.module.css";
 import type { Votes, VoteType } from "../../types/votes";
 import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const [votes, setVotes] = useState<Votes>({
@@ -39,11 +40,13 @@ export default function App() {
         onReset={resetVotes}
         canReset={canReset}
       />
-      <VoteStats
-        votes={votes}
-        totalVotes={totalVotes}
-        positiveRate={positiveRate}
-      />
+      {canReset ?
+        <VoteStats
+          votes={votes}
+          totalVotes={totalVotes}
+          positiveRate={positiveRate}
+        />
+      : <Notification />}
     </div>
   );
 }
