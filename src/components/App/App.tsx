@@ -13,7 +13,7 @@ export default function App() {
     bad: 0,
   });
 
-  const hendleVote = (type: VoteType): void => {
+  const handleVote = (type: VoteType): void => {
     setVotes((prevVotes) => ({
       ...prevVotes,
       [type]: prevVotes[type] + 1,
@@ -36,7 +36,7 @@ export default function App() {
     <div className={css.app}>
       <CafeInfo />
       <VoteOptions
-        onVote={hendleVote}
+        onVote={handleVote}
         onReset={resetVotes}
         canReset={canReset}
       />
